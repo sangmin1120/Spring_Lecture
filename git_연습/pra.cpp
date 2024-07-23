@@ -3,7 +3,7 @@ using namespace std;
 
 void func(){
 
-    cout << "Hello world ( test ) \n";
+    cout << "Hello world ( main 2 ) \n";
 
 }
 int main(){
