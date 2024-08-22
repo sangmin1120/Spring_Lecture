@@ -13,19 +13,28 @@ import org.springframework.context.annotation.Configuration;
 
 @Configuration
 public class AppConfig {
+    // 빈 순서대로 모두 실행됨
+    // AppConfig.memberService
+    // AppConfig.memberRepository
+    // AppConfig.memberRepository
+    // AppConfig.orderService
+    // AppConfig.memberRepository
 
     @Bean
     public MemberService memberService(){
+        System.out.println("AppConfig.memberService");
         return new MemberServiceImpl(memberRepository());
     }
 
     @Bean
-    public static MemoryMemberRepository memberRepository() {
+    public MemoryMemberRepository memberRepository() {
+        System.out.println("AppConfig.memberRepository");
         return new MemoryMemberRepository();
     }
 
     @Bean
     public OrderService orderService(){
+        System.out.println("AppConfig.orderService");
         return new OrderServiceImpl(memberRepository(),discountPolicy());
     }
 
