@@ -32,7 +32,7 @@ public class FrontControllerServletV3 extends HttpServlet {
 
     @Override
     protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        // System.out.println("FrontControllerServletV2 service");
+        // System.out.println("FrontControllerServletV3 service");
 
         String requestURI = request.getRequestURI();
 
@@ -43,7 +43,7 @@ public class FrontControllerServletV3 extends HttpServlet {
         }
 
         // paramMap
-
+        
         Map<String, String> paramMap = createParamMap(request);
         ModelView mv = controller.process(paramMap);
 
@@ -55,7 +55,7 @@ public class FrontControllerServletV3 extends HttpServlet {
     }
 
     private static MyView viewResolver(String viewName) {
-        return new MyView("/WEB-INF/vies/" + viewName + ".jsp");
+        return new MyView("/WEB-INF/views/" + viewName + ".jsp");
     }
 
     private static Map<String, String> createParamMap(HttpServletRequest request) {
