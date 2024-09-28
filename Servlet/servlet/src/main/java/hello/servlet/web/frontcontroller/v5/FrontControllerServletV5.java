@@ -70,7 +70,7 @@ public class FrontControllerServletV5 extends HttpServlet {
         // 2. adapter 찾기
         MyHandlerAdapter adapter = getHandlerAdapter(handler);
 
-        // 3. adapter를 이용해 모델 등록
+        // 3. adapter를 이용해 모델 등록 ( adapter가 controller 호출 )
         ModelView mv = adapter.handle(request, response, handler);
 
         // 4. URI 주소 찾기
