@@ -1,10 +1,12 @@
 package hello.springmvc.basic.request;
 
 
+import hello.springmvc.basic.HelloData;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -24,6 +26,7 @@ import java.util.Map;
 @Controller
 public class RequestParamController {
 
+/* RequestParam ------------------------------------------------------------*/
     @RequestMapping("/request-param-v1")
     public void requestParamV1(HttpServletRequest request, HttpServletResponse response) throws IOException {
         String username = request.getParameter("username");
@@ -76,6 +79,21 @@ public class RequestParamController {
     public String requestParmaMap(@RequestParam Map<String, String> map){
 
         log.info("username:{},age:{}", map.get("username"), map.get("age"));
+        return "ok";
+    }
+/* ModelAttribute 사용 -----------------------------------------------------*/
+    // ModelAttribute 사용 -> 생략도 가능
+    @ResponseBody
+    @RequestMapping("/model-attribute-v1")
+    public String modelAttributeV1(@ModelAttribute HelloData helloData){
+        log.info("helloData:{}", helloData);
+        return "ok";
+    }
+    // ModelAttribute 생략 -> 단순한 타입이 아닐 때 써준다.
+    @ResponseBody
+    @RequestMapping("/model-attribute-v2")
+    public String modelAttributeV2(HelloData helloData){
+        log.info("helloData:{}", helloData);
         return "ok";
     }
 }
