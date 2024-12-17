@@ -9,15 +9,16 @@ import org.springframework.web.bind.annotation.*;
     * 회원 수정 : PATCH '/users/{userId}'
     * 회원 삭제 : DELETE '/users/{userId}'
  */
-@RestController("/mapping/users")
+@RequestMapping("/mapping/uesrs")
+@RestController
 public class MappingClassController {
 
-    @GetMapping
+    @GetMapping()
     public String user(){
         return "get users";
     }
 
-    @PostMapping
+    @PostMapping()
     public String addUser(){
         return "post user";
     }
